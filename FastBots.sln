@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastBots", "FastBots\FastBots.csproj", "{775D29A4-FF66-4DB8-8568-E68C49C3B8FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastBots", "FastBots\FastBots.csproj", "{775D29A4-FF66-4DB8-8568-E68C49C3B8FD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastBots.Tests", "FastBots.Tests\FastBots.Tests.csproj", "{C77F878D-ADB5-4F11-9664-82295ACAE621}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastBots.Localization", "FastBots.Localization\FastBots.Localization.csproj", "{7C5FB47A-ACE6-4177-A7E0-ED3EB35C087C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{775D29A4-FF66-4DB8-8568-E68C49C3B8FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{775D29A4-FF66-4DB8-8568-E68C49C3B8FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{775D29A4-FF66-4DB8-8568-E68C49C3B8FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C77F878D-ADB5-4F11-9664-82295ACAE621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C77F878D-ADB5-4F11-9664-82295ACAE621}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C77F878D-ADB5-4F11-9664-82295ACAE621}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C77F878D-ADB5-4F11-9664-82295ACAE621}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C5FB47A-ACE6-4177-A7E0-ED3EB35C087C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C5FB47A-ACE6-4177-A7E0-ED3EB35C087C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C5FB47A-ACE6-4177-A7E0-ED3EB35C087C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C5FB47A-ACE6-4177-A7E0-ED3EB35C087C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

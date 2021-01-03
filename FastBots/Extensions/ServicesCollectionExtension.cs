@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FastBots.Extensions
 {
-    public static class IServicesCollectionExtension
+    public static class ServicesCollectionExtension
     {
         public static IServiceCollection AddFastBotsLibrary(this IServiceCollection services)
         {
