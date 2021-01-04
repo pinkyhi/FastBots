@@ -13,7 +13,7 @@ namespace FastBots.Commands
 
         public override async void Execute(Message message)
         {
-            Console.WriteLine("Home");
+            Console.WriteLine("Home!");
         }
 
         public override async Task Execute(object sender, MessageEventArgs messageEventArgs)
