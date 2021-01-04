@@ -8,7 +8,7 @@ namespace FastBots.Commands
 
         private SplayTree<ACommand> _tree;
 
-        public CommandTree(BotClient botClient)
+        public CommandTree()
         {
             _tree = new SplayTree<ACommand>();
         }

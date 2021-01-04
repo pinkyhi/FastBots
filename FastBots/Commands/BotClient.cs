@@ -9,7 +9,7 @@ namespace FastBots.Commands
         public BotClient(string token, string webHookUrl) : base(token)
         {
             SetWebhookAsync(webHookUrl);
-            commands = new CommandTree(this);
+            commands = new CommandTree();
         }
     }
 }
