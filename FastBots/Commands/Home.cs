@@ -7,7 +7,7 @@ namespace FastBots.Commands
 {
     class Home : ACommand
     {
-        public Home(string command) : base(command)
+        public Home(string command, BotClient client) : base(command, client)
         {
         }
 
@@ -18,7 +18,7 @@ namespace FastBots.Commands
 
         public override async Task Execute(object sender, MessageEventArgs messageEventArgs)
         {
-            
+            await client.SendTextMessageAsync(messageEventArgs.Message.Chat.Id, "Hello command!");
         }
     }
 }

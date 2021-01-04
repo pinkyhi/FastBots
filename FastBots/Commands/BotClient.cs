@@ -2,14 +2,14 @@
 
 namespace FastBots.Commands
 {
-    public class Bot : TelegramBotClient
+    public class BotClient : TelegramBotClient
     {
         public CommandTree commands;
 
-        public Bot(string token, string webHookUrl) : base(token)
+        public BotClient(string token, string webHookUrl) : base(token)
         {
             SetWebhookAsync(webHookUrl);
-            commands = new CommandTree();
+            commands = new CommandTree(this);
         }
     }
 }

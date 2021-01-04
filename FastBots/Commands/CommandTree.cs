@@ -5,10 +5,10 @@ namespace FastBots.Commands
     public class CommandTree
     {
         public delegate void Execute();
-        
+
         private SplayTree<ACommand> _tree;
 
-        public CommandTree()
+        public CommandTree(BotClient botClient)
         {
             _tree = new SplayTree<ACommand>();
         }
