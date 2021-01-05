@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Telegram.Bot;
+﻿using Telegram.Bot;
 using Telegram.Bot.Args;
 using Telegram.Bot.Types.Enums;
 
@@ -23,7 +22,7 @@ namespace FastBots.Commands
             if (message == null || message.Type != MessageType.Text)
                 return;
 
-            await commands.Execute(message.Text.Split(' ').First());
+            commands.Execute(message);
         }
     }
 }

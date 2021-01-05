@@ -5,16 +5,15 @@ using Telegram.Bot.Types;
 
 namespace FastBots.Commands
 {
-    // Example command
-    class Home : ACommand
+    class Template : ACommand
     {
-        public Home(string command, BotClient client) : base(command, client)
+        public Template(string command, BotClient client) : base(command, client)
         {
         }
 
         public override async void Execute(Message message)
         {
-            Console.WriteLine("Home!");
+            Console.WriteLine("Template!");
         }
 
         public override async Task Execute(object sender, MessageEventArgs messageEventArgs)

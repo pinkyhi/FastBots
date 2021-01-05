@@ -10,10 +10,9 @@ namespace FastBots.Commands
             Insert(command);
         }
 
-        public async void Execute(Message message) // receive something like message
+        public void Execute(Message message)
         {
-            ElementAt(IndexOf(new Home(message.Text, null))).Execute(message);
+            ElementAt(IndexOf(new Template(message.Text, null))).Execute(message);
         }
-        
     }
 }
