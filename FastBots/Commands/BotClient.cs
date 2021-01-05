@@ -1,15 +1,29 @@
-﻿using Telegram.Bot;
+﻿using System.Linq;
+using Telegram.Bot;
+using Telegram.Bot.Args;
+using Telegram.Bot.Types.Enums;
 
 namespace FastBots.Commands
 {
     public class BotClient : TelegramBotClient
     {
-        public CommandTree commands;
+        public static CommandTree commands;
 
         public BotClient(string token, string webHookUrl) : base(token)
         {
             SetWebhookAsync(webHookUrl);
             commands = new CommandTree();
+
+            OnMessage += BotOnMessageReceived;
+        }
+
+        private static async void BotOnMessageReceived(object sender, MessageEventArgs messageEventArgs)
+        {
+            var message = messageEventArgs.Message;
+            if (message == null || message.Type != MessageType.Text)
+                return;
+
+            await commands.Execute(message.Text.Split(' ').First());
         }
     }
 }

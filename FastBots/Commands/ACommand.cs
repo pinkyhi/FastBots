@@ -7,12 +7,12 @@ namespace FastBots.Commands
 {
     public abstract class ACommand : IComparable
     {
-        public string command;
+        public string commandName;
         public BotClient client;
 
         public ACommand(string command, BotClient client)
         {
-            this.command = command;
+            commandName = command;
             this.client = client;
         }
 
@@ -22,7 +22,7 @@ namespace FastBots.Commands
         public int CompareTo(object o)
         {
             if (o is ACommand command)
-                return String.Compare(command.command, this.command, StringComparison.Ordinal);
+                return String.Compare(command.commandName, commandName, StringComparison.Ordinal);
 
             throw new Exception("Can't cast to ACommand type!");
         }

@@ -5,6 +5,7 @@ using Telegram.Bot.Types;
 
 namespace FastBots.Commands
 {
+    // Example command
     class Home : ACommand
     {
         public Home(string command, BotClient client) : base(command, client)

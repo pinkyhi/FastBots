@@ -1,21 +1,19 @@
 ﻿using Advanced.Algorithms.DataStructures;
+using Telegram.Bot.Types;
 
 namespace FastBots.Commands
 {
-    public class CommandTree
+    public class CommandTree: SplayTree<ACommand>
     {
-        public delegate void Execute();
-
-        private SplayTree<ACommand> _tree;
-
-        public CommandTree()
-        {
-            _tree = new SplayTree<ACommand>();
-        }
-
         public void AddCommand(ACommand command)
         {
-            _tree.Insert(command);
+            Insert(command);
         }
+
+        public async void Execute(Message message) // receive something like message
+        {
+            ElementAt(IndexOf(new Home(message.Text, null))).Execute(message);
+        }
+        
     }
 }
