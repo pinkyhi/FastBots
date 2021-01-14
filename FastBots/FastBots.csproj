@@ -5,16 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Advanced.Algorithms" Version="0.0.470-beta" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0" />
-    <PackageReference Include="Telegram.Bot" Version="15.7.1" />
+    <Compile Remove="Enums\**" />
+    <Compile Remove="Static\**" />
+    <EmbeddedResource Remove="Enums\**" />
+    <EmbeddedResource Remove="Static\**" />
+    <None Remove="Enums\**" />
+    <None Remove="Static\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Enums\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Static\" />
-    <Folder Include="Types\" />
+    <PackageReference Include="Advanced.Algorithms" Version="0.0.470-beta" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0" />
+    <PackageReference Include="Telegram.Bot" Version="15.7.1" />
   </ItemGroup>
 
   <ItemGroup>
