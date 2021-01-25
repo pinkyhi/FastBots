@@ -13,7 +13,7 @@ namespace FastBots.Extensions
 {
     public static class ServicesCollectionExtension
     {
-        public static IServiceCollection AddFastBotsLibrary(this IServiceCollection services, FastBotsOptions options)
+        public static IServiceCollection AddFastBots(this IServiceCollection services, FastBotsOptions options)
         {
             services.AddSingleton(options);
             IEnumerable<Type> commandsTypes = Assembly.GetAssembly(typeof(Command)).GetTypes().Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(Command)));
