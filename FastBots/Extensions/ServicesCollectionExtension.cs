@@ -1,4 +1,5 @@
-﻿using FastBots.Types.Commands;
+﻿using FastBots.Types;
+using FastBots.Types.Commands;
 using FastBots.Types.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +22,7 @@ namespace FastBots.Extensions
                 services.AddSingleton(type);
             }
             services.AddSingleton<CommandTree>();
+            services.AddSingleton<BotClient>();
             return services;
         }
     }
