@@ -8,7 +8,12 @@ using System.Threading.Tasks;
 
 namespace FastBots.Types.Commands
 {
-    public abstract class Command : SignatureCommand
+    /// <summary>
+    /// If Code is null then it's input<br/>
+    /// If Status is null then it's command<br/>
+    /// If Code and Status aren't null then it's callback
+    /// </summary>
+    public abstract class Command : CommandSignature
     {
         public abstract bool IsConsistent<TUser>(Telegram.Bot.Types.Update update, TUser user) where TUser : TelegramUser;
         

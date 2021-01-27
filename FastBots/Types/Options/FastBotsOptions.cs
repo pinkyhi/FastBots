@@ -8,6 +8,8 @@ namespace FastBots.Types.Options
     {
         public string Name { get; set; }
 
+        public string ProjectName { get; set; }
+
         public string Token { get; set; }
 
         public string WebHookUrl { get; set; }

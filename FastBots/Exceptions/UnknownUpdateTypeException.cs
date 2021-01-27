@@ -5,11 +5,11 @@ using Telegram.Bot.Types;
 
 namespace FastBots.Exceptions
 {
-    public class WrongSequenceException : Exception
+    public class UnknownUpdateTypeException : Exception
     {
         public Update Update { get; set; }
 
-        public WrongSequenceException(Update update) : base()
+        public UnknownUpdateTypeException(Update update) : base()
         {
             this.Update = update;
         }

@@ -1,13 +1,15 @@
 ﻿using FastBots.Types.Commands;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 using Telegram.Bot.Types;
 
 namespace FastBots.Types
 {
-    public partial class TelegramUser
+    public class TelegramUser
     {
+        [Key]
         public int Id { get; set; }
 
         public bool IsBot { get; set; }

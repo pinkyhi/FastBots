@@ -16,11 +16,6 @@ namespace FastBots.Extensions
         public static IServiceCollection AddFastBots(this IServiceCollection services, FastBotsOptions options)
         {
             services.AddSingleton(options);
-            IEnumerable<Type> commandsTypes = Assembly.GetAssembly(typeof(Command)).GetTypes().Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(Command)));
-            foreach (Type type in commandsTypes)
-            {
-                services.AddSingleton(type);
-            }
             services.AddSingleton<CommandTree>();
             services.AddSingleton<BotClient>();
             return services;
