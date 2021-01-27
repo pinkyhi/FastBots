@@ -1,5 +1,6 @@
 ﻿using Advanced.Algorithms.DataStructures;
 using FastBots.Exceptions;
+using FastBots.Extensions;
 using FastBots.Types;
 using FastBots.Types.Options;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,29 +14,30 @@ using Telegram.Bot.Types;
 
 namespace FastBots.Types.Commands
 {
-    public class CommandTree : SplayTree<IComparable>
+    public class CommandTree<TUser> : SplayTree<IComparable> where TUser : TelegramUser
     {
         private readonly char commandsSeparator;
 
         public CommandTree(IServiceProvider provider, FastBotsOptions options)
         {
             this.commandsSeparator = options.Separator;
-            
+
             // Initialize commands here
+            // Todo Command<User>
             IEnumerable<Assembly> assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.StartsWith(options.ProjectName)).ToList();
                         IEnumerable<Type> commandsTypes = assemblies.SelectMany(n => n.GetTypes()
-                    .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(Command))).ToList(),
+                    .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOfRawGeneric(typeof(Command<>))).ToList(),
                 (n, c) => c).ToList();
-            IEnumerable<Command> commands = commandsTypes.Select(t => ActivatorUtilities.CreateInstance(provider, t)).Cast<Command>().ToList();
-            foreach (Command command in commands)
+            IEnumerable<Command<TUser>> commands = commandsTypes.Select(t => ActivatorUtilities.CreateInstance(provider, t)).Cast<Command<TUser>>().ToList();
+            foreach (Command<TUser> command in commands)
             {
                 this.AddCommand(command);
             }
         }
 
-        private void AddCommand(Command command)
+        private void AddCommand(Command<TUser> command)
         {
-            if (command.Code.Contains(commandsSeparator))
+            if (command.Code?.Contains(commandsSeparator) ?? false)
             {
                 throw new ArgumentException($"Separator in signature \'{command.Code}\'");
             }
@@ -48,7 +50,7 @@ namespace FastBots.Types.Commands
             this.Insert(command);
         }
 
-        public async Task FindAndExecute(Update update, TelegramUser user)
+        public async Task FindAndExecute(Update update, TUser user)
         {
             var commandSignature = new CommandSignature() 
             { 
@@ -84,7 +86,7 @@ namespace FastBots.Types.Commands
             int index = this.IndexOf(commandSignature);
             if(index > -1)
             {
-                Command commandNow = this.ElementAt(index) as Command;
+                Command<TUser> commandNow = this.ElementAt(index) as Command<TUser>;
                 if(commandNow.IsConsistent(update, user))
                 {
                     await commandNow.Execute(update, user);
