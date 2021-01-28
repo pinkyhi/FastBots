@@ -16,7 +16,7 @@ namespace FastBots.Extensions
         public static IServiceCollection AddFastBots<TUser>(this IServiceCollection services, FastBotsOptions options) where TUser : TelegramUser
         {
             services.AddSingleton(options);
-            services.AddSingleton<CommandTree<TUser>>();
+            services.AddScoped<CommandTree<TUser>>();
             services.AddSingleton<BotClient>();
             return services;
         }
