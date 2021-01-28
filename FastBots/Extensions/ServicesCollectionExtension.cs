@@ -18,6 +18,7 @@ namespace FastBots.Extensions
             services.AddSingleton(options);
             services.AddScoped<CommandTree<TUser>>();
             services.AddSingleton<BotClient>();
+            ActivatorUtilities.CreateInstance(services.BuildServiceProvider(), typeof(BotClient));
             return services;
         }
     }

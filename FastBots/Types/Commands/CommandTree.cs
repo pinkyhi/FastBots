@@ -53,13 +53,14 @@ namespace FastBots.Types.Commands
         public async Task FindAndExecute(Update update, TUser user)
         {
             var commandSignature = new CommandSignature() 
-            { 
+            {
                 Status = user.CurrentStatus
             };
             switch (update.Type)
             {
                 case (Telegram.Bot.Types.Enums.UpdateType.CallbackQuery):
                     {
+                        commandSignature.Code = update.CallbackQuery.Data.Split(commandsSeparator)[0];
                         break;
                     }
                 case (Telegram.Bot.Types.Enums.UpdateType.Message):

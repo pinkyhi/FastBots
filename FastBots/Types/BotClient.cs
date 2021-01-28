@@ -9,7 +9,7 @@ namespace FastBots.Types
         public BotClient(FastBotsOptions options) : base(options.Token)
         {
             // Init bot here
-            // Find cert if u want before WebHookAsync
+            // Find cert if u want цbefore WebHookAsync
             SetWebhookAsync(options.WebHookUrl);
         }
     }
