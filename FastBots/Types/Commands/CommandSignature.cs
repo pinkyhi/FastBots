@@ -18,21 +18,36 @@ namespace FastBots.Types.Commands
 
         public int CompareTo([AllowNull] CommandSignature baseCommand)
         {
-            if (baseCommand?.Code == null && baseCommand?.Status == null)
+            if (baseCommand.Code != null && Code != null)
             {
-                throw new NullReferenceException("Signature is null");
+                if(baseCommand.Code.StartsWith('/') && Code.StartsWith('/'))    // Command command
+                {
+                    return this.Code.CompareTo(baseCommand.Code);
+                }
+                else if (baseCommand.Code.StartsWith('/'))  // Command callback
+                {
+                    return -1;
+                }
+                else if (Code.StartsWith('/'))  // Callback command
+                {
+                    return 1;
+                }
+                else // Callback callback
+                {
+                    return this.Code.CompareTo(baseCommand.Code);
+                }
             }
-            if (this.Code == null && baseCommand.Code == null)  // It's input 
-            {
-                return ((int)this.Status).CompareTo((int)baseCommand.Status);
-            }
-            else if (this.Code != null && baseCommand.Code != null)    // It's command or callback
-            {
-                return this.Code.CompareTo(baseCommand.Code);
-            }
-            else
+            else if (baseCommand.Code != null)
             {
                 return -1;
+            }
+            else if (this.Code != null)
+            {
+                return 1;
+            }
+            else // Input
+            {
+                return this.Status.Value.CompareTo(baseCommand.Status.Value);
             }
         }
 
