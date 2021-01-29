@@ -23,5 +23,7 @@ namespace FastBots.Types
         public string LanguageCode { get; set; }
 
         public int CurrentStatus { get; set; }
+
+        public string MiddlewareData { get; set; }
     }
 }
