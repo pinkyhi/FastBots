@@ -88,14 +88,8 @@ namespace FastBots.Types.Commands
             if(index > -1)
             {
                 Command<TUser> commandNow = this.ElementAt(index) as Command<TUser>;
-                if(commandNow.IsConsistent(update, user))
-                {
-                    await commandNow.Execute(update, user);
-                }
-                else
-                {
-                    throw new WrongSequenceException(update);
-                }
+                commandNow.ValidateEnvironment(update, user);
+                await commandNow.Execute(update, user);
             }
             else
             {

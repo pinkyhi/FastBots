@@ -15,7 +15,7 @@ namespace FastBots.Types.Commands
     /// </summary>
     public abstract class Command<TUser> : CommandSignature where TUser : TelegramUser
     {
-        public abstract bool IsConsistent(Telegram.Bot.Types.Update update, TUser user);
+        public abstract void ValidateEnvironment(Telegram.Bot.Types.Update update, TUser user);
         
         public abstract Task Execute(Telegram.Bot.Types.Update update, TUser user);
     }
